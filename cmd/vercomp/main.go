@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/pubkraal/vercomp/internal/version"
+	"github.com/pubkraal/vercomp/pkg/version"
 )
 
 func flagUsage() {
