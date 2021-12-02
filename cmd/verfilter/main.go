@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/pubkraal/vercomp/internal/filter"
 	"github.com/pubkraal/vercomp/internal/version"
 )
 
@@ -21,7 +20,7 @@ func main() {
 	flag.Usage = flagUsage
 	flag.Parse()
 
-	slice, err := filter.MakeSlice(flag.Args())
+	slice, err := version.NewSlice(flag.Args())
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "could not parse all versions: %v", err)
 		os.Exit(1)

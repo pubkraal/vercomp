@@ -14,6 +14,21 @@ func (v VersionSlice) Less(i, j int) bool { return v[i].Less(v[j]) }
 func (v VersionSlice) Swap(i, j int)      { v[i], v[j] = v[j], v[i] }
 func (v VersionSlice) Sort()              { sort.Sort(v) }
 
+func NewSlice(versions []string) (VersionSlice, error) {
+	v := make(VersionSlice, len(versions))
+
+	for idx, item := range versions {
+		ver, err := New(item)
+		if err != nil {
+			return nil, err
+		}
+
+		v[idx] = ver
+	}
+
+	return v, nil
+}
+
 type Version struct {
 	Original string
 	Segments []int
